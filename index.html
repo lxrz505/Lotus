@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOTUS // официальный сайт</title>
+    <style>
+        /* ———— ВИНТАЖНЫЙ МИНИМАЛИЗМ ———— */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            font-family: 'Courier New', 'Lucida Console', 'Monaco', monospace;
+            color: #e5e5e5;
+            height: 100vh;
+            overflow: hidden;
+            font-size: 14px;
+        }
+
+        /* сетка-контейнер */
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* ЛЕВАЯ ПАНЕЛЬ — строгая, как терминал */
+        .sidebar {
+            width: 280px;
+            background: #050505;
+            border-right: 1px solid #2a2a2a;
+            padding: 3rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        /* ссылки меню */
+        .nav-item {
+            color: #aaa;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            padding: 10px 0;
+            margin: 6px 0;
+            cursor: pointer;
+            transition: 0.2s linear;
+            border-left: 2px solid transparent;
+            padding-left: 12px;
+            font-weight: normal;
+        }
+
+        /* Первый пункт "Главная" — чуть крупнее */
+        .nav-item.main-link {
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            color: #dddddd;
+        }
+
+        .nav-item:hover {
+            color: #ffffff;
+            border-left-color: #aa6f6f;
+        }
+
+        .nav-item.active {
+            color: #ffffff;
+            border-left-color: #aa6f6f;
+            font-weight: bold;
+        }
+
+        /* ПРАВАЯ ЧАСТЬ — ФОНОВОЕ ИЗОБРАЖЕНИЕ */
+        .main {
+            flex: 1;
+            position: relative;
+            /* ↓↓↓ СЮДА ВСТАВЬ СВОЮ ПРЯМУЮ ССЫЛКУ С IMAGEBAN ↓↓↓ */
+            background-image: url('https://i7.imageban.ru/out/2026/06/01/55d1fcf23a9b410dafd7ba5f4f768c75.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow-y: auto;
+        }
+
+        /* Прозрачный слой — делает текст читаемым */
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(0px);
+            min-height: 100%;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Стили контента — винтажный минимализм */
+        .content-pane {
+            max-width: 550px;
+            background: transparent;
+            animation: fadeIn 0.25s ease;
+        }
+
+        h1, h2 {
+            font-family: 'Courier New', monospace;
+            font-size: 2.2rem;
+            font-weight: normal;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #ececec;
+            margin-bottom: 1.2rem;
+            border-left: 3px solid #aa6f6f;
+            padding-left: 18px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+        }
+
+        .info-text {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #cdcdcd;
+            margin-top: 0.5rem;
+        }
+
+        .member, .release {
+            margin-bottom: 1.5rem;
+        }
+
+        .member-name {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: #dddddd;
+        }
+
+        .member-role {
+            font-size: 0.7rem;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        .release-name {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #ddd;
+            margin-bottom: 5px;
+        }
+
+        a {
+            color: #bb8f8f;
+            text-decoration: none;
+            border-bottom: 1px dotted #5a4a4a;
+        }
+
+        a:hover {
+            color: white;
+            border-bottom-color: #b77b7b;
+        }
+
+        /* анимация */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* скролл */
+        .main::-webkit-scrollbar {
+            width: 4px;
+        }
+        .main::-webkit-scrollbar-track {
+            background: #111;
+        }
+        .main::-webkit-scrollbar-thumb {
+            background: #4a3a3a;
+        }
+
+        /* адаптация под мобильные */
+        @media (max-width: 700px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                padding: 1rem;
+                border-right: none;
+                border-bottom: 1px solid #2a2a2a;
+            }
+            .nav-item.main-link {
+                width: 100%;
+                margin-bottom: 0;
+            }
+            .nav-item {
+                padding: 4px 8px;
+                font-size: 0.65rem;
+            }
+            .overlay {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <div class="nav-item main-link active" data-tab="home">Главная</div>
+        <div class="nav-item" data-tab="members">Участники</div>
+        <div class="nav-item" data-tab="singles">Синглы</div>
+        <div class="nav-item" data-tab="album">Альбом</div>
+        <div class="nav-item" data-tab="about">О группе</div>
+        <div class="nav-item" data-tab="contacts">Контакты</div>
+    </div>
+
+    <div class="main">
+        <div class="overlay">
+            <!-- КОНТЕНТ БУДЕТ ПОЯВЛЯТЬСЯ ЗДЕСЬ -->
+            <div id="home" class="content-pane active-content">
+                <h1>LOTUS</h1>
+                <div class="info-text">металл группа / Кировск / 2026</div>
+                <div class="info-text" style="margin-top: 20px;">Добро пожаловать на официальный сайт.</div>
+            </div>
+
+            <div id="members" class="content-pane">
+                <h2>Участники</h2>
+                <div class="member">
+                    <div class="member-name">Алексей Мельник</div>
+                    <div class="member-role">гитара, вокал</div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Александр Триханов</div>
+                    <div class="member-role">барабаны</div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Кирилл Владиславович</div>
+                    <div class="member-role">бас, бэк-вокал</div>
+                </div>
+                <div class="info-text" style="margin-top: 16px;">Кировск, 2026</div>
+            </div>
+
+            <div id="singles" class="content-pane">
+                <h2>Синглы</h2>
+                <div class="release">
+                    <div class="release-name">Rabies (2026)</div>
+                    <div class="info-text">Первый сингл. Войдёт в дебютный альбом.</div>
+                </div>
+                <div class="release">
+                    <div class="release-name">Obsessed (2026)</div>
+                    <div class="info-text">Второй сингл. Мрачное звучание.</div>
+                </div>
+            </div>
+
+            <div id="album" class="content-pane">
+                <h2>Альбом</h2>
+                <div class="info-text">Дебютный альбом выходит в этом году.<br>Включает синглы «Rabies» и «Obsessed» + новый материал.</div>
+            </div>
+
+            <div id="about" class="content-pane">
+                <h2>О группе</h2>
+                <div class="info-text">Lotus — метал-группа из России, основанная в 2026 году в городе Кировск.<br><br>
+                В настоящее время группа готовит свой первый дебютный альбом, выход которого ожидается в этом году.</div>
+            </div>
+
+            <div id="contacts" class="content-pane">
+                <h2>Контакты</h2>
+                <div class="info-text">
+                    <a href="https://t.me/TNRBand5" target="_blank">Telegram канал</a><br>
+                    <a href="https://tiktok.com/@lo1us1" target="_blank">TikTok / @lo1us1</a><br>
+                    📍 Кировск, реп. база
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Логика переключения разделов
+    const navItems = document.querySelectorAll('.nav-item');
+    const panes = document.querySelectorAll('.content-pane');
+
+    function switchTo(tabId) {
+        panes.forEach(pane => {
+            pane.classList.remove('active-content');
+            pane.style.display = 'none';
+        });
+        const activePane = document.getElementById(tabId);
+        if (activePane) {
+            activePane.style.display = 'block';
+            activePane.classList.add('active-content');
+        }
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-tab') === tabId) {
+                item.classList.add('active');
+            }
+        });
+    }
+
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const tab = item.getAttribute('data-tab');
+            switchTo(tab);
+        });
+    });
+
+    // Скрыть все панели, кроме home при загрузке
+    document.querySelectorAll('.content-pane').forEach(p => p.style.display = 'none');
+    document.getElementById('home').style.display = 'block';
+    document.getElementById('home').classList.add('active-content');
+</script>
+</body>
+</html>
